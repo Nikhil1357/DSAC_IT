@@ -5,14 +5,15 @@ export default function vote() {
 
     const st={
         display:"flex",
+        flexWrap:"wrap",
         alignItems:"center",
-        justifyContent:"space-between",
-        width:"100vw",
-        height:"100vh"
+        justifyContent:"space-around",
+        height:"200vh",
+        width:"98vw"
     }
   return (
     <div>
-        <h2>Cast your vote</h2>
+        <h2 style={{fontSize:"3rem"}}>Cast your vote</h2>
         <div style={st}>
         <Card name="Project1" desc="Desc1"/>
         <Card name="Project2" desc="Desc2"/>
