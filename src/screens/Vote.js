@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import Card from '../components/Card';
+import axios from 'axios';
+import load from '../load.gif';
 
 export default function Vote() {
 
     const {currentUser} = useAuth();
     const {signout} = useAuth();
+
+    const [projectsarray, set_projectsarray] = useState(); 
+    const [loading,setloading] = useState(true);
+    useEffect(() => {
+        
+      fetch('/projects')
+      .then(response=>response.json())
+      .then(data=>{
+        set_projectsarray(data);
+        setloading(false);
+      }
+        )
+    }, [])
+    
 
     const st={
       display:"flex",
@@ -15,16 +31,21 @@ export default function Vote() {
       height:"200vh",
       width:"98vw"
   }
+  if(loading)
+  {
+  return(
+    <img src={load} width={"500px"} />
+  )
+  }
     // console.log(signout);
     return (
     <>
     <div>
         <h2 style={{fontSize:"3rem"}}>Cast your vote</h2>
         <div style={st}>
-        <Card name="Project1" desc="Nikhil mowa thopu, Nikhil mowa ne oopu"/>
-        <Card name="Project2" desc="Desc2"/>
-        <Card name="Project3" desc="Desc3"/>
-        <Card name="Project4" desc="Desc4"/>
+        {projectsarray.map((data)=>{
+          return<Card name="Project2" desc="Desc2"/>
+        })}
         </div>
     </div>
     <div>Dashboard:{currentUser.email}</div>
