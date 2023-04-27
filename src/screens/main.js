@@ -1,8 +1,25 @@
 import React, { useState } from 'react'
 import GoogleButton from 'react-google-button'
+import { addToNewUser } from '../Calls/Services';
+import { auth } from '../firebase';
+import { useAuth } from '../contexts/AuthContext';
+
 export default function Main() {
 
-    // const [disable, setdisable] = useState(true);
+    const {googlesignin} = useAuth();
+
+    const google_sign_in_function = async()=>{
+        try
+        {
+            const res = await googlesignin();
+            addToNewUser(auth.currentUser.displayName, auth.currentUser.email);
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+    }
+
     const s1={
         fontSize:"5rem",
         textAlign:"center",
@@ -39,7 +56,9 @@ export default function Main() {
             <h3 style={s3}>Vasavi Project League</h3>
             <p style={s5}>To Vote</p>
             <div style={s4} className="signup">
-                <GoogleButton>Sign Up with Google</GoogleButton>
+                <GoogleButton onClick={()=>{
+                    google_sign_in_function();
+                }} >Sign Up with Google</GoogleButton>
             </div>
         </div>
     </div>
