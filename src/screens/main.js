@@ -1,6 +1,20 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+// import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../contexts/AuthContext';
+// import { auth } from '../firebase' 
+import { Link } from 'react-router-dom';
 
 export default function Main() {
+
+    const userRef = useRef();
+    const passRef = useRef();
+    const {signup} = useAuth();
+
+    
+    // currentUser?console.log(currentUser.email):console.log('nn')
+    const handle = () =>{
+        signup(userRef.current.value, passRef.current.value)
+    }
 
     // const [disable, setdisable] = useState(true);
     const s1={
@@ -37,16 +51,20 @@ export default function Main() {
             <h3 style={s3}>Vasavi Project League</h3>
             <p style={s5}>Login to VOTE</p>
             <div className="before">
-            <input style={s4} type="email" placeholder='Enter your email'/>
+            <input ref={userRef} style={s4} type="email" placeholder='Enter your email'/>
             <button onClick={()=>{
                 setdisable(false);
             }} style={s4}>Submit</button>
             </div>
             <div className="after">
-            <input id="inp" style={s4} disabled={disable} type="text" placeholder='Confirm OTP'/>
-            <button id="sub" style={s4} disabled={disable}>Submit</button>
+            <input ref={passRef} id="inp" style={s4} disabled={disable} type="text" placeholder='Confirm OTP'/>
+            <button onClick={()=>{
+                handle();
+            }} id="sub" style={s4} disabled={disable}>Submit</button>
+           
             </div>
         </div>
+    
     </div>
   )
 }
