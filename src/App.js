@@ -6,8 +6,8 @@ import Vote from './screens/vote';
 function App() {
   return (
     <div className="App">
-      {/* <Main/> */}
-      <Vote/>
+      <Main/>
+      {/* <Vote/> */}
     </div>
   );
 }

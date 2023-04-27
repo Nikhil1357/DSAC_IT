@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import GoogleButton from 'react-google-button'
 export default function Main() {
 
     // const [disable, setdisable] = useState(true);
@@ -18,13 +18,15 @@ export default function Main() {
         marginTop:"-1vh"
     }
     const s4={
-        padding:"1%",
-        margin:"1%"
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center"
     }
 
     const s5={
         fontSize:"2rem",
         marginTop:"7%",
+        textAlign:"center",
         marginBottom:"1%"
     }
     
@@ -35,16 +37,9 @@ export default function Main() {
             <h1 style={s1}>DSAC IT</h1>
             <h2 style={s2}>Presents</h2>
             <h3 style={s3}>Vasavi Project League</h3>
-            <p style={s5}>Login to VOTE</p>
-            <div className="before">
-            <input style={s4} type="email" placeholder='Enter your email'/>
-            <button onClick={()=>{
-                setdisable(false);
-            }} style={s4}>Submit</button>
-            </div>
-            <div className="after">
-            <input id="inp" style={s4} disabled={disable} type="text" placeholder='Confirm OTP'/>
-            <button id="sub" style={s4} disabled={disable}>Submit</button>
+            <p style={s5}>To Vote</p>
+            <div style={s4} className="signup">
+                <GoogleButton>Sign Up with Google</GoogleButton>
             </div>
         </div>
     </div>
