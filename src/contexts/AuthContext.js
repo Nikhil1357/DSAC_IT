@@ -38,7 +38,7 @@ export default function AuthProvider({children}) {
         try{
         
         const provider = new GoogleAuthProvider();
-        const res = await signInWithPopup(auth,provider);
+        const res = await signInWithRedirect(auth,provider);
         // const user = res.user;
         // const q = query(collection(db,"users"),where("uid","==",user.uid));
         // const docs = await getDocs(q);

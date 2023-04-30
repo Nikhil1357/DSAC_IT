@@ -21,7 +21,6 @@ export default function Vote() {
       }
         )
     }, [])
-    
 
     const st={
       display:"flex",
