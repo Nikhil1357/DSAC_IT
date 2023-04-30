@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
-import Card from '../components/Card';
+import Card from '../components/card';
 import axios from 'axios';
 import load from '../load.gif';
 
@@ -43,7 +43,7 @@ export default function Vote() {
         <h2 style={{fontSize:"3rem"}}>Cast your vote</h2>
         <div style={st}>
         {projectsarray.map((data)=>{
-          return<Card name="Project2" desc="Desc2"/>
+          return<Card data={data}/>
         })}
         </div>
     </div>
