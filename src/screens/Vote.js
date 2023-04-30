@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
-import Card from '../components/Card';
+import Card from '../components/card';
 import axios from 'axios';
 import load from '../load.gif';
 
