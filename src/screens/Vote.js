@@ -44,7 +44,7 @@ export default function Vote() {
         <h2 style={{fontSize:"3rem"}}>Cast your vote</h2>
         <div style={st}>
         {projectsarray.map((data)=>{
-          return<Card name="Project2" desc="Desc2"/>
+          return<Card data={data}/>
         })}
         </div>
     </div>
