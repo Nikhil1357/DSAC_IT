@@ -6,6 +6,7 @@ import load from '../load.gif';
 import { fetchProjects } from '../Calls/Services';
 import { auth } from '../firebase';
 import { isVoted } from '../Calls/Services';
+import './vote.css';
 
 export default function Vote() {
 
@@ -40,9 +41,9 @@ export default function Vote() {
       flexWrap:"wrap",
       alignItems:"center",
       justifyContent:"space-around",
-      height:"200vh",
+      // height:"20vh",
       width:"98vw"
-  }
+    }
   if(loading)
   {
   return(
@@ -51,8 +52,12 @@ export default function Vote() {
   }
     // console.log(signout);
     return (
-    <>
-    <div 
+    <div className='full'>
+    <div>Dashboard:{currentUser.email}</div>
+    <button onClick={()=>{
+        signout();
+    }}>Logout</button>
+    <div className='full2'
     style={{pointerEvents:voted || frontendvoted?'none':'auto'}}
     >
     {voted || frontendvoted?<p>Already Voted</p>:<></>}
@@ -65,10 +70,7 @@ export default function Vote() {
         })}
         </div>
     </div>
-    <div>Dashboard:{currentUser.email}</div>
-    <button onClick={()=>{
-        signout();
-    }}>Logout</button>
-    </>
+    
+    </div>
   )
 }
