@@ -14,7 +14,7 @@ export default function Vote() {
     const votedfor = auth.currentUser.VotedFor;
     
     const [voted, setVoted] = useState(false);
-    const [projectsarray, set_projectsarray] = useState(); 
+    const [projectsarray, set_projectsarray] = useState([]); 
     const [loading,setloading] = useState(true);
     const [frontendvoted, setfrontendvoted] = useState(false);
     useEffect(() => {
