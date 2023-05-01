@@ -3,7 +3,7 @@ import GoogleButton from 'react-google-button'
 import { addToNewUser } from '../Calls/Services';
 import { auth } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
-import GIF from '../coding.gif';
+import im from '../google.svg';
 
 export default function Main() {
 
@@ -64,6 +64,7 @@ export default function Main() {
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
+        fontFamily: "'Lexend Deca', sans-serif"
     }
 
     const [disable, setdisable] = useState(true);
@@ -74,10 +75,11 @@ export default function Main() {
             <h2 style={s2}>Presents</h2>
             <h3 style={s3}>Vasavi Project League</h3>
             <p style={s5}>To Vote</p>
-            <div style={s4} className="signup">
-                <GoogleButton onClick={()=>{
+            <div onClick={()=>{
                     google_sign_in_function();
-                }} >Sign Up with Google</GoogleButton>
+                }} style={s4} className="signup">
+                <p>Sign in with</p>
+                <img src={im} alt="" />
             </div>
         </div>
     </div>

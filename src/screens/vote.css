@@ -1,0 +1,15 @@
+.full{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(26, 25, 25);
+    color:white;
+}
+
+.full2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
