@@ -8,12 +8,18 @@ import GIF from '../coding.gif';
 export default function Main() {
 
     const {googlesignin} = useAuth();
-
+     
     const google_sign_in_function = async()=>{
         try
         {
             const res = await googlesignin();
-            addToNewUser(auth.currentUser.displayName, auth.currentUser.email);
+            addToNewUser(auth.currentUser.displayName, auth.currentUser.email)
+            .then(data => {
+                console.log(data);
+                auth.currentUser.response = data
+                console.log(auth.currentUser.response);
+            })
+             
         }
         catch(err)
         {
