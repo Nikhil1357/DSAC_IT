@@ -1,0 +1,18 @@
+.signup{
+    background-color: white;
+    color:black;
+    border-radius: 10px;
+    width:200px;
+}
+
+.signup img{
+    padding:4%;
+    width:20px;
+}
+
+.front{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

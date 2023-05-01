@@ -4,6 +4,7 @@ import { addToNewUser } from '../Calls/Services';
 import { auth } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
 import im from '../google.svg';
+import './main.css'
 
 export default function Main() {
 
@@ -35,24 +36,24 @@ export default function Main() {
     const s2={
         fontSize:"1.2rem",
         textAlign:"center",
-        marginTop:"-7vh"
+        marginTop:"2vh"
     }
     const s3={
         fontSize:"2.5rem",
         textAlign:"center",
-        marginTop:"-1vh"
+        marginTop:"2vh"
     }
     const s4={
         display:"flex",
         alignItems:"center",
-        justifyContent:"center"
+        justifyContent:"center",
     }
 
     const s5={
         fontSize:"2rem",
         marginTop:"7%",
         textAlign:"center",
-        marginBottom:"1%"
+        marginBottom:"2vh"
     }
     
     const over={
@@ -71,9 +72,9 @@ export default function Main() {
   return (
     <div style={over}>
         <div className="front">
-            <h1 style={s1}>DSAC IT</h1>
-            <h2 style={s2}>Presents</h2>
-            <h3 style={s3}>Vasavi Project League</h3>
+            <div style={s1}><strong>DSAC IT</strong></div>
+            <div style={s2}>Presents</div>
+            <div style={s3}>Vasavi Project League</div>
             <p style={s5}>To Vote</p>
             <div onClick={()=>{
                     google_sign_in_function();
