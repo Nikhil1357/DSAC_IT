@@ -3,10 +3,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: rgb(26, 25, 25);
+    background-color: rgb(0, 0, 0);
     color:white;
     font-family: 'Lexend Deca';
-    height:"100vh"
+    min-height:100vh;
 }
 
 .full2{
@@ -14,4 +14,40 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    /* height:100%; */
+}
+
+.divi{
+    padding:2%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:30vw;
+}
+
+.divi button{
+    margin-left:20%;
+    font-style: 'Lexend Deca';
+    background-color: rgb(0, 0, 0);
+    padding:3%;
+    border: none;
+    cursor: pointer;
+}
+
+.divbutt img{
+    width:8vw;
+    -webkit-filter: invert(100%);
+}
+
+.divbutt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100px;
+    margin:3%;
+    font-family: 'Lexend Deca';
+    background-color: black;
+    color:white;
+    border: none;
+    /* cursor: pointer; */
 }
