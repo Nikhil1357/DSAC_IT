@@ -41,7 +41,7 @@ export default function Vote() {
       flexWrap:"wrap",
       alignItems:"center",
       justifyContent:"space-around",
-      // height:"20vh",
+      height:"100%",
       width:"98vw"
     }
   if(loading)
