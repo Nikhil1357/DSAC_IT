@@ -3,6 +3,7 @@ import GoogleButton from 'react-google-button'
 import { addToNewUser } from '../Calls/Services';
 import { auth } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
+import GIF from '../coding.gif';
 
 export default function Main() {
 
@@ -23,6 +24,7 @@ export default function Main() {
     const s1={
         fontSize:"5rem",
         textAlign:"center",
+        marginTop:"0"
     }
     const s2={
         fontSize:"1.2rem",
@@ -47,9 +49,20 @@ export default function Main() {
         marginBottom:"1%"
     }
     
+    const over={
+        backgroundColor:"black",
+        color:"white",
+        padding:"0",
+        margin:"0",
+        height:"100vh",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+    }
+
     const [disable, setdisable] = useState(true);
   return (
-    <div>
+    <div style={over}>
         <div className="front">
             <h1 style={s1}>DSAC IT</h1>
             <h2 style={s2}>Presents</h2>
