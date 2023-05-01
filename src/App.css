@@ -16,8 +16,10 @@ body{
   /* background-image: url(code.jpeg); */
   background-position: center;
   background-repeat: no-repeat;
-  background-size: fill 100vw;
+  /* background-size: fill 100vw; */
+  background-size: cover;
   /* color:white; */
+  
 }
 
 

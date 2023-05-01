@@ -5,9 +5,11 @@ import { auth } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
 import im from '../google.svg';
 import './main.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function Main() {
 
+    const nav = useNavigate();
     const {googlesignin} = useAuth();
      
     const google_sign_in_function = async()=>{
@@ -15,12 +17,9 @@ export default function Main() {
         {
             const res = await googlesignin();
             addToNewUser(auth.currentUser.displayName, auth.currentUser.email)
-            .then(data => {
-                console.log(data);
-                auth.currentUser.response = data
-                console.log(auth.currentUser.response);
-            })
-             
+            .then(data => {nav('/Vote')})
+            .catch(()=>console.log("Hi"))
+            
         }
         catch(err)
         {
