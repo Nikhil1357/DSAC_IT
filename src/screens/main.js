@@ -3,16 +3,23 @@ import GoogleButton from 'react-google-button'
 import { addToNewUser } from '../Calls/Services';
 import { auth } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
+import { fetchProjects } from '../Calls/Services';
 
 export default function Main() {
 
     const {googlesignin} = useAuth();
-
+     
     const google_sign_in_function = async()=>{
         try
         {
             const res = await googlesignin();
-            addToNewUser(auth.currentUser.displayName, auth.currentUser.email);
+            addToNewUser(auth.currentUser.displayName, auth.currentUser.email)
+            .then(data => {
+                console.log(data);
+                auth.currentUser.response = data
+                console.log(auth.currentUser.response);
+            })
+             
         }
         catch(err)
         {

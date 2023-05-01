@@ -3,23 +3,36 @@ import { useAuth } from '../contexts/AuthContext'
 import Card from '../components/card';
 import axios from 'axios';
 import load from '../load.gif';
+import { fetchProjects } from '../Calls/Services';
+import { auth } from '../firebase';
+import { isVoted } from '../Calls/Services';
 
 export default function Vote() {
 
     const {currentUser} = useAuth();
     const {signout} = useAuth();
-
+    const votedfor = auth.currentUser.VotedFor;
+    
+    const [voted, setVoted] = useState(false);
     const [projectsarray, set_projectsarray] = useState(); 
     const [loading,setloading] = useState(true);
+    const [frontendvoted, setfrontendvoted] = useState(false);
     useEffect(() => {
         
-      fetch('/projects')
-      .then(response=>response.json())
-      .then(data=>{
-        set_projectsarray(data);
+      const projects = async () =>{
+        
+        fetchProjects(auth.currentUser.displayName, auth.currentUser.email)
+        .then((data)=>{set_projectsarray(data)}) 
+        
+        isVoted()
+        .then(data=>{setVoted(data)})
+
         setloading(false);
+
+
       }
-        )
+      projects();
+      
     }, [])
 
     const st={
@@ -39,11 +52,16 @@ export default function Vote() {
     // console.log(signout);
     return (
     <>
-    <div>
+    <div 
+    style={{pointerEvents:voted || frontendvoted?'none':'auto'}}
+    >
+    {voted || frontendvoted?<p>Already Voted</p>:<></>}
         <h2 style={{fontSize:"3rem"}}>Vote the project you like</h2>
         <div style={st}>
-        {projectsarray.map((data)=>{
-          return<Card data={data}/>
+        {projectsarray && projectsarray.map((data)=>{
+          return(
+            <Card key={data.Roll} setfrontendvoted={setfrontendvoted} votedfor={votedfor} data={data}/>
+          )
         })}
         </div>
     </div>
