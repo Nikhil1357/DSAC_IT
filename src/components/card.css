@@ -37,7 +37,15 @@
   }
   
   .flip-card-back {
-    background-color: dodgerblue;
+    background-color: rgb(67, 67, 67);
     color: white;
     transform: rotateY(180deg);
+  }
+
+  .flip-card-back button{
+    color: black;
+    background-color: white;
+    width:10vw;
+    height:5vh;
+    font-family: 'Lexend Deca';
   }
