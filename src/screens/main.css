@@ -3,6 +3,7 @@
     color:black;
     border-radius: 10px;
     width:200px;
+    cursor: pointer;
 }
 
 .signup img{

@@ -7,70 +7,75 @@ import { fetchProjects } from '../Calls/Services';
 import { auth } from '../firebase';
 import { isVoted } from '../Calls/Services';
 import './vote.css';
+import exit from '../box-arrow-left.svg'
 
 export default function Vote() {
 
-    const {currentUser} = useAuth();
-    const {signout} = useAuth();
-    const votedfor = auth.currentUser.VotedFor;
-    
-    const [voted, setVoted] = useState(false);
-    const [projectsarray, set_projectsarray] = useState([]); 
-    const [loading,setloading] = useState(true);
-    const [frontendvoted, setfrontendvoted] = useState(false);
-    useEffect(() => {
-        
-      const projects = async () =>{
-        
-        fetchProjects(auth.currentUser.displayName, auth.currentUser.email)
-        .then((data)=>{set_projectsarray(data)}) 
-        
-        isVoted()
-        .then(data=>{setVoted(data)})
+  const { currentUser } = useAuth();
+  const { signout } = useAuth();
+  const votedfor = auth.currentUser.VotedFor;
 
-        setloading(false);
+  const [voted, setVoted] = useState(false);
+  const [projectsarray, set_projectsarray] = useState([]);
+  const [loading, setloading] = useState(true);
+  const [frontendvoted, setfrontendvoted] = useState(false);
+  useEffect(() => {
+
+    const projects = async () => {
+
+      fetchProjects(auth.currentUser.displayName, auth.currentUser.email)
+        .then((data) => { set_projectsarray(data) })
+
+      isVoted()
+        .then(data => { setVoted(data) })
+
+      setloading(false);
 
 
-      }
-      projects();
-      
-    }, [])
-
-    const st={
-      display:"flex",
-      flexWrap:"wrap",
-      alignItems:"center",
-      justifyContent:"space-around",
-      height:"100%",
-      width:"98vw"
     }
-  if(loading)
-  {
-  return(
-    <img src={load} width={"500px"} />
-  )
+    projects();
+
+  }, [])
+
+  const st = {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "space-around",
+    height: "100%",
+    width: "98vw"
   }
-    // console.log(signout);
+  if (loading) {
     return (
+      <img src={load} width={"500px"} />
+    )
+  }
+  // console.log(currentUser);
+  return (
     <div className='full'>
-    <div>Dashboard:{currentUser.email}</div>
-    <button onClick={()=>{
-        signout();
-    }}>Logout</button>
-    <div className='full2'
-    style={{pointerEvents:voted || frontendvoted?'none':'auto'}}
-    >
-    {voted || frontendvoted?<p>Already Voted</p>:<></>}
-        <h2 style={{fontSize:"3rem"}}>Vote the project you like</h2>
+      <div className="divi">
+        <div>Welcome, {currentUser.displayName}</div>
+      </div>
+      <div className='full2'
+        style={{ pointerEvents: voted || frontendvoted ? 'none' : 'auto' }}
+      >
+        {voted || frontendvoted ? <h2 style={{ fontSize: "5vw" }}>
+          Vote has been casted
+        </h2> : <h2 style={{ fontSize: "5vw" }}>
+          Vote the project you like
+        </h2>}
         <div style={st}>
-        {projectsarray && projectsarray.map((data)=>{
-          return(
-            <Card key={data.Roll} setfrontendvoted={setfrontendvoted} votedfor={votedfor} data={data}/>
-          )
-        })}
+          {projectsarray && projectsarray.map((data) => {
+            return (
+              <Card key={data.Roll} setfrontendvoted={setfrontendvoted} votedfor={votedfor} data={data} />
+            )
+          })}
         </div>
-    </div>
-    
+        
+      </div>
+      <button className='divbutt' onClick={()=>{
+        signout();
+    }}><h2>Signout</h2><img src={exit}></img></button>
     </div>
   )
 }
